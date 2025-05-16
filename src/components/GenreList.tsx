@@ -19,7 +19,7 @@ const GenreList = ({ onSelectGenre }: Props) => {
   const { data: genres, error, isLoading } = useGenres();
   const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
 
-  const selectGenreHandler = (genre: Genre) => {
+  const selectGenreHandler = (genre: Genre | any) => {
     onSelectGenre(genre);
     setSelectedGenre(genre);
   };
