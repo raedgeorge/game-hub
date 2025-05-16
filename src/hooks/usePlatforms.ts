@@ -4,7 +4,7 @@ const usePlatforms = () => useData<Platform>("/platforms/lists/parents");
 
 export default usePlatforms;
 
-interface Platform {
+export interface Platform {
   id: number;
   name: string;
   slug: string;
