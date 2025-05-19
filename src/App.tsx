@@ -36,6 +36,7 @@ function App() {
       <Show above="lg">
         <GridItem area="aside" paddingX={5}>
           <GenreList
+            selectedGenreId={gameQuery.genreId}
             onSelectGenre={(genreId) => setGameQuery({ ...gameQuery, genreId })}
           />
         </GridItem>
@@ -45,6 +46,7 @@ function App() {
           <GameHeading gameQuery={gameQuery} />
           <HStack spacing={5}>
             <PlatformSelector
+              selectedPlatformId={gameQuery.platformId}
               onSelectPlatform={(platformId) =>
                 setGameQuery({ ...gameQuery, platformId })
               }
