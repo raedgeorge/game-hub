@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import ApiCliet from "../services/api-client";
+import ApiCliet, { FetchResponse } from "../services/api-client";
 
 const apiClient = new ApiCliet<Platform>("/platforms/lists/parents");
 
 const usePlatforms = () =>
-  useQuery<Platform[], Error>({
+  useQuery<FetchResponse<Platform>, Error>({
     queryKey: ["platforms"],
     queryFn: apiClient.getAll,
   });

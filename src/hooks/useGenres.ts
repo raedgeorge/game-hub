@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import ApiCliet from "../services/api-client";
+import ApiCliet, { FetchResponse } from "../services/api-client";
 
 export interface Genre {
   id: number;
@@ -11,7 +11,7 @@ export interface Genre {
 const apiClient = new ApiCliet<Genre>("/genres");
 
 const useGenres = () => {
-  return useQuery<Genre[], Error>({
+  return useQuery<FetchResponse<Genre>, Error>({
     queryKey: ["genres"],
     queryFn: apiClient.getAll,
     staleTime: 24 * 60 * 60 * 1000, // 24h
