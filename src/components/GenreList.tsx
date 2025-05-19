@@ -12,16 +12,16 @@ import getCropedImageUrl from "../services/image-url";
 import { useState } from "react";
 
 interface Props {
-  onSelectGenre: (genre: Genre) => void;
+  onSelectGenre: (genreId: number) => void;
 }
 
 const GenreList = ({ onSelectGenre }: Props) => {
   const { data: genres, error, isLoading } = useGenres();
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
+  const [selectedGenreId, setSelectedGenreId] = useState<number | null>(null);
 
-  const selectGenreHandler = (genre: Genre | any) => {
-    onSelectGenre(genre);
-    setSelectedGenre(genre);
+  const selectGenreHandler = (genre: Genre) => {
+    onSelectGenre(genre.id);
+    setSelectedGenreId(genre.id);
   };
 
   if (error) return null;
@@ -47,7 +47,7 @@ const GenreList = ({ onSelectGenre }: Props) => {
                 fontSize="large"
                 whiteSpace="normal"
                 textAlign="left"
-                fontWeight={genre.id === selectedGenre?.id ? "bold" : "normal"}
+                fontWeight={genre.id === selectedGenreId ? "bold" : "normal"}
                 onClick={selectGenreHandler.bind(this, genre)}
               >
                 {genre.name}
